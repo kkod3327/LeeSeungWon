@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>휴일</title>
+</head>
+<body>
+<h2>월화수목금토일</h2>
+<hr>
+<script>
+day="";
+do {
+	
+	day = prompt("요일을 입력하세요", "예:월");
+
+
+	if(day == "월" | day == "화"|  day =="수" | day == "목" |day == "금")
+	{
+		document.write(day+"요일은 평일입니다. 출근하십시오")
+		break;
+	}
+
+
+	
+	else if(day == "토" | day =="일"){
+		document.write(day+"요일은 휴일입니다. 놀자")
+		break;
+	}
+	else{
+		day = prompt("요일을 입력하세요", "예:월");
+	}
+
+
+} while(true);
+
+</script>
+</body>
+</html>

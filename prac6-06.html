@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>함수 만들기</title>
+</head>
+<body>
+<h2>함수 만들기</h2>
+<hr>
+<script>
+
+function big (a,b){
+	let output="";
+	a=parseInt(a);
+	b=parseInt(b);
+	if(a>b){
+		output=a;
+		return output;
+	}
+	else if(a<b){
+		output=b;
+		return output;
+	}
+	else
+	output=a;
+	return output;
+
+	}
+</script>
+
+<script>
+b=big("625","525");
+document.write("큰 수 = "+b);
+
+</script>
+</body>
+</html>
