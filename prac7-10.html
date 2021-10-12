@@ -15,7 +15,7 @@
 	};
 
 	let list = new Array();
-	let most =0;
+	let expensive =0;
 
 	for(let i=0; i<5; i++) { 
 	k=i+1;
@@ -26,16 +26,16 @@
 	
 	for(let j=0; j<5;j++){
 	a=list[j];
-	expensive=0;
 	
 	document.write(a.title+"  "+a.author+"  "+a.price+"<br>");
-	if(a.price>expensive){
+	if(a.price-expensive>0){
 		expensive=a.price;
-		most=j;
-	}}
-	c=list[most];
+		m=j;}
+	}
 	
-	document.write("<hr> 가장 비싼 책은<br>"+c.title+c.author+c.price);
+	c=list[m];
+	
+	document.write("<hr> 가장 비싼 책은<br>"+c.title+" "+c.author+" "+c.price);
 
 </script>
 </body>
