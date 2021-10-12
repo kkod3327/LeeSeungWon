@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>book 객체 만들기</title>
+</head>
+<body>
+<h3>book 객체 만들기</h3>
+<hr>
+<script>
+
+	function book (title,author,price) {
+	this.title = title; 
+	this.author= author;
+	this.price= price;
+	};
+
+	let list = new Array();
+	let most =0;
+
+	for(let i=0; i<5; i++) { 
+	k=i+1;
+	let x = prompt(k+'번째 요소 입력 *제목,저자,가격순','개미,베르나르,34000');
+	y=x.split(',');
+	list[i] =new book(y[0],y[1],y[2]);
+	}
+	
+	for(let j=0; j<5;j++){
+	a=list[j];
+	expensive=0;
+	
+	document.write(a.title+"  "+a.author+"  "+a.price+"<br>");
+	if(a.price>expensive){
+		expensive=a.price;
+		most=j;
+	}}
+	c=list[most];
+	
+	document.write("<hr> 가장 비싼 책은<br>"+c.title+c.author+c.price);
+
+</script>
+</body>
+</html>
