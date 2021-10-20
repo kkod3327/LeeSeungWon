@@ -4,9 +4,10 @@
 <title>DOM 객체 동적 삽입</title>
 <script>
 function addAnswer(obj,text) {
+	let b=obj.parentElement;
 	a=document.createElement("p");
 	a.innerHTML=text;
-	obj.appendChild(a);
+	b.appendChild(a);
 }
 </script>
 </head>
