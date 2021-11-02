@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>onmousemove</title>
+
+</head>
+<body>
+<h3>이미지 커서 만들기</h3>
+<hr>
+<p>마우스를 움직이면 이미지로 만든 커서가 마우스를 따라다닙니다.
+</p>
+<div style="top:0px; left:0px; display:absolute; position:absolute;" id="mouse" >
+<img src="media/람쥐.png" style="width: 30px; height: 30px;">
+</div>
+
+<script>
+	let a=document.getElementById("mouse");
+	document.addEventListener("mousemove",e=>{
+		
+		const mouseX=e.clientX;
+		const mouseY=e.clientY;
+	
+		
+
+		a.style.left= mouseX + "px";
+		a.style.top= mouseY + "px";
+	});
+	
+	
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>onwheel</title>
+<script>
+function imagecon(e,obj) {
+	let a=parseFloat(obj.style.width);
+	let b=parseFloat(obj.style.height);
+	
+	if (e.wheelDelta<0){
+	obj.style.width= a*1.05+"px";
+	obj.style.height= b*1.05+"px";
+	
+}
+	else if (e.wheelDelta>0){
+	obj.style.width= a*0.95+"px";
+	obj.style.height= b*0.95+"px";
+	
+}
+
+}
+</script>
+</head>
+<body >
+<h3>마우스 휠을 이용한 이미지 확대/축소</h3>
+<hr>
+<p>이미지 위에 휠을 위로 굴리면 이미지가 축소되고 아래로 굴리면 이미지가 확대됩니다.
+</p>
+<img style="width: 300px; height: 300px;"src="media/람쥐.png" onwheel="imagecon(event,this)">
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>계산기 만들기</title>
+<script>
+
+function calculator(){
+	let exp=document.getElementById("exp");
+	exp.value=eval(exp.value);
+}
+
+function input(obj){
+	let a=obj.innerHTML;
+	let b=document.getElementById("exp");
+	
+	b.value=b.value+a;
+}
+
+function init(){
+	let a=document.getElementById("exp");
+	a.value="";
+}
+
+function del(){
+	let a=document.getElementById("exp");
+	a.value=a.value.slice(0,-1);
+}
+
+
+</script>
+<style>
+	table td{
+		width:70px;
+
+
+	}
+	button{
+		width: 80px;
+		color: gray;
+	}
+</style>
+
+</head>
+<body>
+	<h3>계산기 만들기</h3>
+	<hr>
+	
+		<input style="width: 200px;" type="text" id="exp"><hr>
+	<table>
+		<tr>
+			<td><button onclick="del()">Back</button></td> <td><button onclick="init()">CE</button></td> <td><button onclick="init()">C</button></td> <td><button id="iden" onclick="calculator()">=</button></td> <br>
+		</tr>
+		<tr>
+			<td><button onclick="input(this)">7</button></td> <td><button onclick="input(this)">8</button></td> <td><button onclick="input(this)">9</butto></td><td><button onclick="input(this)">/</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="input(this)">4</button></td><td><button onclick="input(this)">5</button></td><td><button onclick="input(this)">6</button></td><td><button onclick="input(this)">*</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="input(this)">1</button></td><td><button onclick="input(this)">2</button></td><td><button onclick="input(this)">3</button></td><td><button onclick="input(this)">-</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="input(this)">0</button></td><td><button onclick="input(this)">+</button></td><td>
+		</tr>
+	</table>
+
+
+	
+
+
+
+
+</body>
+</html>
