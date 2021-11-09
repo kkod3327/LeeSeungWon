@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>screen 객체</title>
+<script>
+function checkScreen() {
+	if(screen.width < 9595 || screen.height < 9595)
+		alert("스크린 해상도가 9595*9595보다 낮습니다")
+		alert("현재 해상도:"+screen.width+"*"+screen.height);
+}
+</script>
+</head>
+<body onload="checkScreen()">
+<h3>screen 객체 활용</h3>
+<hr>
+<p>스크린의 해상도가 1280x1024 보다 작은 경우
+웹 페이지가 정상적으로 출력되지 않을 수 있음을
+알리는 경고창을 출력한다.
+</p>
+</body>
+</html>
