@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        table,th,td {
+          border : 1px solid black;
+          border-collapse: collapse;
+        }
+        th,td {
+          padding: 5px;
+        }
+        </style>
        <title>재난문자 확인</title>
        <h2>재난 문자 확인</h2>
 </head>
@@ -8,7 +17,7 @@
    
 
 <script>
-    
+function operation(){
 let xhr = new XMLHttpRequest();
 let url = 'http://apis.data.go.kr/1741000/DisasterMsg3/getDisasterMsg1List'; /*URL*/
 let queryParams = '?' + encodeURIComponent('serviceKey') + '='+'XdLb2GVZJthcux3Dx0%2BTXO12r6mgf2PYbcBiN6NmH6yrs3fpH0oaji%2B2qHtTfzH%2FbALKJPrNiF11drPPYP657A%3D%3D'; /*Service Key*/
@@ -20,7 +29,7 @@ xhr.open('GET', url + queryParams);
 
 xhr.onreadystatechange = function () {
     if (this.readyState == 4) {
-       alert(this.responseText);
+       
        const x = xhr.responseXML;
        
 
@@ -36,13 +45,13 @@ xhr.onreadystatechange = function () {
             "</td></tr>";
         }
         document.getElementById('내용').innerHTML=table;
-        alert(table);
-    }
+        }
     
 };
 xhr.send('');
+};
 </script>
-
+<button onclick="operation()">확인하기</button>
 <table id ='내용'></table>    
 </body>
 </html>
