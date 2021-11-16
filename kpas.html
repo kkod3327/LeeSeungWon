@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <title>재난문자 확인</title>
+</head>
+<body>
+    <h2>재난 문자 확인</h2>
+
+<script>
+    
+let xhr = new XMLHttpRequest();
+let url = 'http://apis.data.go.kr/1741000/DisasterMsg3/getDisasterMsg1List'; /*URL*/
+let queryParams = '?' + encodeURIComponent('serviceKey') + '='+'XdLb2GVZJthcux3Dx0%2BTXO12r6mgf2PYbcBiN6NmH6yrs3fpH0oaji%2B2qHtTfzH%2FbALKJPrNiF11drPPYP657A%3D%3D'; /*Service Key*/
+queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
+queryParams += '&' + encodeURIComponent('type') + '=' + encodeURIComponent('xml'); /**/
+xhr.open('GET', url + queryParams);
+xhr.onreadystatechange = function () {
+    if (this.readyState == 4) {
+       alert(this.responseText);
+       const x = xhr.responseXML;
+       xhr.send('');
+
+       const loc = x.getElementsByTagName("location_name");
+       const msg = x.getElementsByTagName("msg");
+       let table="<tr><th>지역</th><th>내용</th></tr>";
+       for(let i=0;i<loc.length;i++)
+       {
+        table +="<tr><td>"+
+            loc[i].firstChild.data +
+            "</td><td>" +
+            msg[i].firstChild.data +
+            "</td></tr>";
+        }
+        document.getElementById("내용").innerHTML=table;
+    }
+};
+
+
+
+</script>
+<div id ='내용'>
+</div>    
+
+</body>
+</html>
+
