@@ -2,9 +2,10 @@
 <html>
 <head>
        <title>재난문자 확인</title>
+       <h2>재난 문자 확인</h2>
 </head>
 <body>
-    <h2>재난 문자 확인</h2>
+   
 
 <script>
     
@@ -15,11 +16,13 @@ queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'
 queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
 queryParams += '&' + encodeURIComponent('type') + '=' + encodeURIComponent('xml'); /**/
 xhr.open('GET', url + queryParams);
+
+
 xhr.onreadystatechange = function () {
     if (this.readyState == 4) {
        alert(this.responseText);
        const x = xhr.responseXML;
-       xhr.send('');
+       
 
        const loc = x.getElementsByTagName("location_name");
        const msg = x.getElementsByTagName("msg");
@@ -28,20 +31,19 @@ xhr.onreadystatechange = function () {
        {
         table +="<tr><td>"+
             loc[i].firstChild.data +
-            "</td><td>" +
+            "</td><td>" + 
             msg[i].firstChild.data +
             "</td></tr>";
         }
-        document.getElementById("내용").innerHTML=table;
+        document.getElementById('내용').innerHTML=table;
+        alert(table);
     }
+    
 };
-
-
-
+xhr.send('');
 </script>
-<div id ='내용'>
-</div>    
 
+<table id ='내용'></table>    
 </body>
 </html>
 
