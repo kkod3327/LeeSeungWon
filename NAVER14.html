@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>간단한 지도 표시하기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=6zgpjicay9"></script>    
+</head>
+
+
+
+<body>
+    <div id="map" style="width:100%;height:600px;"></div>
+<script>
+var map = new naver.maps.Map(document.getElementById('map'), {
+    zoom: 18,
+    mapTypeId: 'normal',
+    center: new naver.maps.LatLng(37.3586524, 127.1060678)
+});
+
+let HOME_PATH = "https://navermaps.github.io/maps.js/docs/";
+
+naver.maps.Event.once(map, 'init_stylemap', function () {
+    $.ajax({
+    url: HOME_PATH+'/data/naver.json',
+    dataType: 'json',
+    success: startDataLayer
+});
+
+});
+
+let dumy;
+function startDataLayer(geojson) {
+    map.data.addGeoJson(geojson);
+    dumy=geojson;
+    map.data.setStyle(function(feature) {
+        var color = 'red';
+
+        if (feature.getProperty('isColorful')) {
+            color = feature.getProperty('color');
+        }
+
+        return {
+            fillColor: color,
+            strokeColor: color,
+            strokeWeight: 2,
+            icon: null
+        };
+    });
+
+    map.data.addListener('click', function(e) {
+        e.feature.setProperty('isColorful', true);
+    });
+
+    map.data.addListener('dblclick', function(e) {
+        var bounds = e.feature.getBounds();
+
+        if (bounds) {
+            map.panToBounds(bounds);
+        }
+    });
+
+    map.data.addListener('mouseover', function(e) {
+        map.data.overrideStyle(e.feature, {
+            strokeWeight: 8,
+            icon: HOME_PATH +'/img/example/pin_spot.png'
+        });
+    });
+
+    map.data.addListener('mouseout', function(e) {
+        map.data.revertStyle();
+    });
+}
+</script>
+
+</body>
+</html>
+
